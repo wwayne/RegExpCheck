@@ -7,12 +7,9 @@
   <script src="js/main.js"></script>
 </head>
 <body>
-  <input type='text' ng-model="wayne"/>
-  <input type='text' ng-model="wzx" />
-  <p>{{wayne}}{{wzx}}</p>
-  <p>{{name}}</p>
-  <div my-directive my-friend="kobe">
-
+  <input type='text' placeholder="expression" ng-model="expression"/><br />
+  <input type='text' placeholder="text" ng-model="text" /><br />
+  <div wayne-pick wayne-expression={{expression}} wayne-text={{text}}>
   </div>
 </body>
 </html>
