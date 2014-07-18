@@ -1,0 +1,53 @@
+$red:#e84c3d;
+$blue:#2b8ad4;
+$yellow:#f3d47f;
+@font-face {
+      font-family: 'exo';
+      src: url('../fonts/exo-regular-webfont.eot');
+      src: url('../fonts/exo-regular-webfont?#iefix') format('embedded-opentype'),
+           url('../fonts/exo-regular-webfont.woff') format('woff'),
+	         url('../fonts/exo-regular-webfont.ttf') format('truetype'),
+	         url('../fonts/exo-regular-webfont.svg#SingleMaltaRegular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+@font-face {
+      font-family: 'exo-light';
+      src: url('../fonts/exo-light-webfont.eot');
+      src: url('../fonts/exo-light-webfont?#iefix') format('embedded-opentype'),
+           url('../fonts/exo-light-webfont.woff') format('woff'),
+           url('../fonts/exo-light-webfont.ttf') format('truetype'),
+           url('../fonts/exo-light-webfont.svg#SingleMaltaRegular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+@font-face {
+      font-family: 'exo-extra-light';
+      src: url('../fonts/exo-extralight-webfont.eot');
+      src: url('../fonts/exo-extralight-webfont?#iefix') format('embedded-opentype'),
+           url('../fonts/exo-extralight-webfont.woff') format('woff'),
+           url('../fonts/exo-extralight-webfont.ttf') format('truetype'),
+           url('../fonts/exo-extralight-webfont.svg#SingleMaltaRegular') format('svg');
+      font-weight: normal;
+      font-style: normal;
+}
+@mixin box-sizing{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@mixin border-radius($radius){
+  -webkit-border-radius:$radius;
+  -moz-border-radius:$radius;
+  border-radius:$radius;
+}
+@mixin clear-float{
+  content:"";
+  display:block;
+  clear:both;
+}
+@mixin word-break{
+  -ms-word-wrap:break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+}

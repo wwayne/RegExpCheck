@@ -3,13 +3,30 @@
 <head>
   <meta charset='utf-8'>
   <title>J-Rex | check your javascript RexExp</title>
+  <link rel="stylesheet" type='text/css' href='css/main.min.css'/>
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="js/main.js"></script>
 </head>
 <body>
-  <input type='text' placeholder="expression" ng-model="expression"/><br />
-  <input type='text' placeholder="text" ng-model="text" /><br />
-  <div wayne-pick wayne-expression={{expression}} wayne-text={{text}}>
+  <div class="wrap">
+    <header>
+      <h2>J-REX</h2>
+      <h6>The boss won't be worry about my js RegExp ever</h6>
+      <a class="logo"></a>
+    </header>
+     <div class="operate-area">
+         <p>Regular expression&nbsp;&nbsp;&nbsp;正则表达式</p>
+         <div class="expression-area">
+             <div class="label"><p>/</p></div>
+             <div class="input-place"><input type='text'  ng-model="expression"/></div>
+             <div class="label"><p>/</p></div>
+             <div class="input-place"><input type='text' ng-model="suffix"/></div>
+         </div>
+         <p>Your test string&nbsp;&nbsp;&nbsp;要匹配的文字</p>
+         <textarea ng-model="text"></textarea>
+         <p>Match result&nbsp;&nbsp;&nbsp;匹配结果</p>
+         <div class="match-result" ng-show=true wayne-pick wayne-expression={{expression}} wayne-text={{text}} wayne-suffix={{suffix}}></div>
+     </div>
   </div>
 </body>
 </html>
