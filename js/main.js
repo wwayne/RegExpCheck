@@ -14,62 +14,65 @@ app.directive("waynePick",function($compile){
             $scope.text='';
             $scope.status=true;
             $scope.$watch('expression+text+suffix',function(){
-              if($scope.expression.length>0){
-                //输入表达式
-                  if($scope.text.length>0){
-                      //也输入了文本
-                      var expression=new RegExp($scope.expression,$scope.suffix),
-                          text=$scope.text;
-                      var matchArray=text.match(expression);
-                      if(matchArray!=null){
-                          //有匹配结果
-                          if(matchArray[0].length>0){
-                              $scope.status=true;
-                              var i,
-                                  indexArray=[],
-                                  nextResult,
-                                  splitText=text.split(""),
-                                  spanElement=["<span class='match-span'>","</span>"],
-                                  span;
-                              do{
-                                  nextResult=expression.exec(text);
-                                  if(nextResult!=null){
-                                      indexArray.push(nextResult.index);
-                                      indexArray.push(nextResult.index+nextResult[0].length);
-                                  }
-                              }while(nextResult!=null);
-                              for(i=indexArray.length-1;i>=0;i--){
-                                   span=spanElement[i % 2];
-                                   splitText.splice(indexArray[i],0,span);
-                              }
-                              $scope.result=splitText.join("");
-                          }
-                          else{
-                              //匹配的是空字符串
-                              $scope.status=false;
-                              $scope.result=text;
+              var suffix_validate=$scope.suffix==="g"||$scope.suffix==="m"||$scope.suffix==="i"||$scope.suffix.length==0?true:false;
+              if(suffix_validate){
+                if($scope.expression.length>0){
+                  //输入表达式
+                    if($scope.text.length>0){
+                        //也输入了文本
+                        var expression=new RegExp($scope.expression,$scope.suffix),
+                            text=$scope.text;
+                        var matchArray=text.match(expression);
+                        if(matchArray!=null){
+                            //有匹配结果
+                            if(matchArray[0].length>0){
+                                $scope.status=true;
+                                var i,
+                                    indexArray=[],
+                                    nextResult,
+                                    splitText=text.split(""),
+                                    spanElement=["<span class='match-span'>","</span>"],
+                                    span;
+                                while((nextResult=expression.exec(text))!=null){
+                                  indexArray.push(nextResult.index);
+                                  indexArray.push(nextResult.index+nextResult[0].length);
+                                }
+                                for(i=indexArray.length-1;i>=0;i--){
+                                     span=spanElement[i % 2];
+                                     splitText.splice(indexArray[i],0,span);
+                                }
+                                $scope.result=splitText.join("");
+                            }
+                            else{
+                                //匹配的是空字符串
+                                $scope.status=false;
+                                $scope.result=text;
 
-                          }
-                      }
-                      else{
-                          //无匹配结果
-                          $scope.status=false;
-                          $scope.result=text;
-                      }
-                  }
-                  else{
-                     //输入了表达式，没有输入文本
-                      text=$scope.text;
-                      $scope.status=true;
-                      $scope.result=text;
-                  }
+                            }
+                        }
+                        else{
+                            //无匹配结果
+                            $scope.status=false;
+                            $scope.result=text;
+                        }
+                    }
+                    else{
+                       //输入了表达式，没有输入文本
+                        text=$scope.text;
+                        $scope.status=true;
+                        $scope.result=text;
+                    }
 
+                }
+                else{
+                  //表达式没有输入时
+                    var text=$scope.text;
+                    $scope.status=true;
+                    $scope.result="";
+                }
               }
               else{
-                //表达式没有输入时
-                  var text=$scope.text;
-                  $scope.status=true;
-                  $scope.result="";
+                $scope.status=false;
               }
             });
         },
