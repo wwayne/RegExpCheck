@@ -41,7 +41,7 @@ header{
 .operate-area{
   margin:15px 30px 10px;
   background:#333;
-  padding:3px 20px;
+  padding:3px 20px 21px;
   @include box-sizing;
   @include border-radius(10px);
   &>p{
@@ -122,23 +122,36 @@ header{
       @include clear-float;
     }
   }
-  .match-result{
-    margin:0px 25px;
-    background:$input-background;
-    color:$input-color;
+  .match-place{
+    $min-height:70px;
     font-size:$input-font-size;
-    border:$input-border;
+    margin:0px 25px;
     @include border-radius(5px);
     width:562px;
-    p{
-      @include word-break;
-      .match-span{
-        color:#b08715;
-        display:inline-block;
-        padding:2px 7px;
-        margin:0 3px;
-        background:$yellow;
-        @include box-sizing;
+    padding:0px 9px;
+    min-height:$min-height;
+    @include box-sizing;
+    &.match-result{
+      background:$input-background;
+      color:$input-color;
+      border:$input-border;
+      p{
+        @include word-break;
+        .match-span{
+          color:$yellow-font;
+          display:inline-block;
+          padding:1px 4px;
+          margin:1px 1px;
+          background:$yellow;
+        }
+      }
+    }
+    &.match-result-false{
+      background:$red;
+      p{
+        margin:0px;
+        line-height:$min-height;
+        color:#fff;
       }
     }
   }
