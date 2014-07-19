@@ -5,7 +5,9 @@
   <title>J-Rex | check your javascript RexExp</title>
   <link rel="stylesheet" type='text/css' href='css/main.min.css'/>
   <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/mustache/mustache.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/reference.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -24,9 +26,33 @@
          </div>
          <p>Your test string&nbsp;&nbsp;&nbsp;要匹配的文字</p>
          <textarea ng-model="text"></textarea>
-         <p>Match result&nbsp;&<nbsp></nbsp>;&nbsp;匹配结果</p>
+         <p>Match result&nbsp;&nbsp;&nbsp;匹配结果</p>
          <div id="wayne" wayne-pick wayne-expression={{expression}} wayne-text={{text}} wayne-suffix={{suffix}} ></div>
      </div>
+     <div class="help">
+         <p>JavaScript RegExp Reference&nbsp;&nbsp;&nbsp;符号说明</p>
+         <table id="reference-table">
+         </table>
+     </div>
+     <table class="parameter-table">
+         <tr>
+             <td>i: 执行对大小写不敏感的匹配</td>
+             <td>g: 执行全局匹配</td>
+             <td>m: 执行多行匹配</td>
+         </tr>
+     </table>
+      <p class="signature">Designed by pptalent</p>
   </div>
+  <script>
+      window.onload=function(){
+          var table=document.getElementById("reference-table");
+          var data={array:REFERENCE};
+          var tableContent=Mustache.render("{{#array}}<tr>" +
+                  "{{#.}}<td class='yellow'>{{code}}</td>" +
+                  "<td>{{explain}}</td>{{/.}}" +
+                  "</tr>{{/array}}",data);
+          table.innerHTML=tableContent;
+      }
+  </script>
 </body>
 </html>

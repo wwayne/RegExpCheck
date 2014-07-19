@@ -141,7 +141,7 @@ header{
           color:$yellow-font;
           display:inline-block;
           padding:1px 4px;
-          margin:1px 1px;
+          margin:1px 0px;
           background:$yellow;
         }
       }
@@ -155,4 +155,48 @@ header{
       }
     }
   }
+}
+.help{
+  $border:1px solid rgba(255,255,255,0.5);
+  border-top:$border;
+  border-bottom:$border;
+  margin-top:40px;
+  padding:12px 0px;
+  &>p{
+    text-align:center;
+    font-size:16px;
+    color:$blue;
+    margin-top:0px;
+  }
+  table{
+    width:100%;
+    td{
+      font-size:14px;
+      color:rgba(255,255,255,0.6);
+      padding:4px 0px;
+      &.yellow{
+        color:$yellow;
+        text-align:right;
+        padding-right:3px;
+      }
+    }
+  }
+}
+.parameter-table{
+  width:100%;
+  table-layout:fixed;
+  td{
+    text-align:center;
+    width:33%;
+    color:lighten($red,10%);
+    font-size:13px;
+  }
+}
+.signature{
+  color:rgba(255,255,255,0.5);
+  text-align:center;
+  font-size:13px;
+  margin-bottom:0px;
+  position:relative;
+  bottom:-30px;
 }
