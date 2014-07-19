@@ -14,7 +14,8 @@ app.directive("waynePick",function($compile){
             $scope.text='';
             $scope.status=true;
             $scope.$watch('expression+text+suffix',function(){
-              var suffix_validate=$scope.suffix==="g"||$scope.suffix==="m"||$scope.suffix==="i"||$scope.suffix.length==0?true:false;
+              var suffix_expression=new RegExp("[^gmi]");
+              var suffix_validate=(!suffix_expression.test($scope.suffix))||$scope.suffix.length==0?true:false;
               if(suffix_validate){
                 if($scope.expression.length>0){
                   //输入表达式
@@ -33,7 +34,14 @@ app.directive("waynePick",function($compile){
                                     splitText=text.split(""),
                                     spanElement=["<span class='match-span'>","</span>"],
                                     span;
-                                while((nextResult=expression.exec(text))!=null){
+                                if(/[g]/g.test($scope.suffix)){
+                                  while((nextResult=expression.exec(text))!=null){
+                                    indexArray.push(nextResult.index);
+                                    indexArray.push(nextResult.index+nextResult[0].length);
+                                  }
+                                }
+                                else{
+                                  nextResult=expression.exec(text);
                                   indexArray.push(nextResult.index);
                                   indexArray.push(nextResult.index+nextResult[0].length);
                                 }
