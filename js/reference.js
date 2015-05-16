@@ -59,3 +59,5 @@ var REFERENCE=
         {code:"?!n",explain:"其后没有紧接指定字符串n的字符串"}
     ]
 ];
+
+module.exports =  REFERENCE;

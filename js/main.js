@@ -1,3 +1,19 @@
+'use strict';
+
+var angule = require("angular");
+var Mustache = require("mustache");
+var REFERENCE = require("./reference");
+
+window.onload=function(){
+    var table=document.getElementById("reference-table");
+    var data={array:REFERENCE};
+    var tableContent=Mustache.render("{{#array}}<tr>" +
+            "{{#.}}<td class='yellow'>{{code}}</td>" +
+            "<td>{{explain}}</td>{{/.}}" +
+            "</tr>{{/array}}",data);
+    table.innerHTML=tableContent;
+}
+
 var app=angular.module('jrex',[]);
 app.directive("waynePick",function($compile){
     return{
